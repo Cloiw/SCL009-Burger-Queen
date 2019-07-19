@@ -10,6 +10,8 @@ import Order from './components/Order';
 import OrdenName from './components/ordenName';
 import CategoryBtn from './components/CategoryBtn'
 import LunchBtn from './components/LunchBtn'
+import SaveOrder from './data/SaveOrder';
+
 
 
 class MenuView extends React.Component{
@@ -70,6 +72,7 @@ if(category ==="Desayunos"){
         <Order list = {this.state.list} delete={this.delete}/>
       </div>
       <OrdenName/>
+      <SaveOrder/>
   </section>
 </>
   )
