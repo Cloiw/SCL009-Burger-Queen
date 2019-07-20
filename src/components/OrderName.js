@@ -10,8 +10,9 @@ class OrderName extends Component{
     }
 
     changeClient(el){
+        el.preventDefault();
         this.setState({
-            client: el.target.value
+            client: el.target.value 
         })
     }
 
@@ -21,7 +22,7 @@ class OrderName extends Component{
                 <div className="ordenform">
                     <label>ORDEN</label>
                     <input type="text" onChange={this.changeClient} />
-                    <input className ="buttonOrden" type="submit" value="enviar"/>
+                    <input className ="buttonOrden" type="submit" value="enviar" onSubmit={this.changeClient}/>
                 </div>
             </form>
         
