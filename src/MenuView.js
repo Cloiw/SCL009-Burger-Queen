@@ -11,18 +11,21 @@ import LunchBtn from './components/LunchBtn'
 
 class MenuView extends React.Component{
   
-  constructor(props){
-    super(props)
-    this.state = {list: [],category:null};
+  constructor(){
+    super()
+    this.state = {list: [],category:null, client:""};
     this.add = this.add.bind(this);
     this.delete = this.delete.bind(this);
     this.view = this.view.bind(this);
+    this.changeClient = this.changeClient.bind(this);
+    this.sendName= this.sendName.bind(this);
+    this.addName=this.addName.bind(this);
     this.index = 0; // id de cada elemento de orden creado
   }
   
   //añade un producto({name,value,id} a la orden(list -> array de objetos [el index comienza en 0 y se utiliza como id]
   add(valueToAdd,nameToAdd){
-    this.setState({list: this.state.list.concat([{name : nameToAdd, value:valueToAdd, id:this.index}])});
+    this.setState({list: this.state.list.concat([{name : nameToAdd, value:valueToAdd, id:this.index , client:this.state.client}])});
     this.index ++;
   }
 
@@ -51,6 +54,22 @@ class MenuView extends React.Component{
       })
     }
   }
+  addName(){
+    alert('holi')
+     
+    
+  }
+
+  changeClient(el){
+    this.setState({
+        client: el.target.value
+    });  console.log(el.target.value)
+}
+  sendName(e){
+    e.preventDefault();
+    console.log(this.state)
+console.log('enviando..')
+}
 
   render(){
     return (
@@ -66,9 +85,9 @@ class MenuView extends React.Component{
             </div>
           </section>  
           <aside className="side-content">
-            <OrderName/>
+            <OrderName changeClient={this.changeClient} client={this.state.client} sendName={this.sendName} nameclient={this.add}/>
             <div>
-              <Order list = {this.state.list} delete={this.delete}/>
+              <Order list ={this.state.list} delete={this.delete} sendName={this.sendName} nameclient={this.add}/>
             </div>
           </aside>
       </>
