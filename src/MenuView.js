@@ -1,5 +1,5 @@
 import React from 'react';
-import{ db} from './data/firebase';
+import {db} from './data/firebase';
 import './index.css';
 import Navbar from './navbar';
 import Btn from './components/Btn'
@@ -12,15 +12,16 @@ import LunchBtn from './components/LunchBtn'
 
 class MenuView extends React.Component{
   
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
+   
     this.state = {list: [],category:null, client:""};
     this.add = this.add.bind(this);
     this.delete = this.delete.bind(this);
     this.view = this.view.bind(this);
-    this.changeClient = this.changeClient.bind(this);
-    this.sendName= this.sendName.bind(this);
-    this.addName=this.addName.bind(this);
+    this.changeClient = this.changeClient.bind(this)
+    this.clearOrder = this.clearOrder.bind(this);
+    this.saveOrder = this.saveOrder.bind(this);
     this.index = 0; // id de cada elemento de orden creado
     this.saveOrder=this.saveOrder.bind(this)
   }
@@ -73,7 +74,6 @@ class MenuView extends React.Component{
 } 
 saveOrder(){
   let data={client :this.state.client ,
-    uid:doc.uid,
   list:this.state.list,
   ready:false ,
   delivered:false, 
@@ -89,6 +89,32 @@ saveOrder(){
 };
 
 
+clearOrder(){
+  this.setState({
+    list: [],
+    client:""
+  })
+
+}
+
+saveOrder(){
+
+  let data=
+  {
+  client: this.state.client,
+  list: this.state.list,
+  ready: false,
+  deliveded: false,
+  time: Date.now() 
+  }
+
+  db.collection("ordenes").doc().set(data)
+  .then(() =>{
+    this.clearOrder();
+  })
+
+}
+
   render(){
     return (
       <>
@@ -101,9 +127,7 @@ saveOrder(){
                 {this.state.desayunos &&
                   <div className="item-btn-row"> {Menu.Desayunos.map(btn=><Btn name={btn.name} value={btn.value} add={this.add} key={btn.name}/>)}
                   </div> }
-                {this.state.almuerzos && <LunchBtn add={this.add}/>}
-              
-              
+                {this.state.almuerzos && <LunchBtn add={this.add}/>}  
             </section>  
             <aside className="side-content-col">
               <div className="line-order">
@@ -114,8 +138,8 @@ saveOrder(){
                 <Order list = {this.state.list} delete={this.delete} addName={this.addName} client={this.state.client}/>
               </div>
               <footer className="footer-side">
-                <button className="btn-aside" >Limpiar</button>
-                <button className="btn-aside" onClick={this.saveOrder}>ENVIAR</button>
+              <button className="btn-aside-clear" onClick={this.clearOrder}>LIMPIAR</button>
+              <button className="btn-aside" onClick={this.saveOrder}>ENVIAR </button>
               </footer>
             </aside>
           </div>

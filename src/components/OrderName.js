@@ -7,8 +7,7 @@ class OrderName extends Component{
           <form className="client-input" onSubmit={this.props.sendName} >
             <label>
               Cliente:
-              <input className="name-input" value={this.props.client} client={this.props.client}onChange={this.props.changeClient} nameclient={this.addName}/>
-              <button type="submit" nameclient={this.addName}>OK!</button>
+              <input placeholder="Nombre del cliente" className="name-input"value={this.props.client} onChange={this.props.changeClient} />
             </label>
           </form>
         );
