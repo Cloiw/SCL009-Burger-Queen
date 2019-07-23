@@ -4,10 +4,10 @@ class OrderName extends Component{
   
       render() {
         return (
-          <form onSubmit={this.props.sendName} >
+          <form className="client-input" onSubmit={this.props.sendName} >
             <label>
               Cliente:
-              <input value={this.props.client} onChange={this.props.changeClient} nameclient={this.addName}/>
+              <input className="name-input" value={this.props.client} client={this.props.client}onChange={this.props.changeClient} nameclient={this.addName}/>
               <button type="submit" nameclient={this.addName}>OK!</button>
             </label>
           </form>

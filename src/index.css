@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+
 body {
   margin: 0;
   font-family: sans-serif;
@@ -9,95 +11,182 @@ header {
   background: #C4C4C4;
 }
 
-.menu ul {
-  margin: 0;
-  list-style: none;
-  padding: 0;
-  display: flex;
-}
-
-.menu li{
-  text-align: center;
-  flex-grow: 1;
-  border-right: 1px solid #F1F1F1;
-}
-
-.menu li img{
-  width: 130px;
-  height: 80px;
-  z-index: 1;
-}
-
-.menu li:hover{
-  background: #F1F1F1;
-}
-
-.menu li a{
-  display: block;
-  padding: 15px 20px;
-  color: #442681;
-  text-decoration: none;
-}
-
-
-.content, .side-content{
-  float: left;
-  box-sizing: border-box;
-}
-.content{
-  width: 60%;
-}
-
-.side-content{
-  width: 40%;
-  height: 500px;
-}
-
-.content, .side-content{
-  padding: 1em 2em;
-}
-
-.btn{
-  width: 150px;
-  height: 90px;
-  color: #F1F1F1;
-  background: #8A8889;
-  border-radius: 25px;
-}
-
-.buttonday ul {
-  margin: 0;
-  list-style: none;
-  padding: 0;
-  display: flex;
-}
-
-.buttonday li{
-  text-align: center;
-}
-
-
-.btn:hover{
-  background: #7E57C2;
-}
 
 .elementMenuBtn{
   color: yellow;
 }
 
-.BtnMenu{
-  width: 100px;
-  height: 80px;
-  color: #F1F1F1;
-  background: #B085F5;
-  margin: 5px;
-  margin-top: 25px;
+
+.buttonDelete, .btn-aside{
+  background: #FF8B3E;
 }
 
-.BtnMenu:hover{
+
+.menu-nav-row,.menu-ul-row,.content-row,.category-btn-row,.item-btn-row{
+  display: flex;
+  flex-direction:row;
+  width: 100%;
+}
+.menu-left-col,.menu-center-col,.button-content-col,.side-content-col,.menu-right-col{
+  display:flex;
+  flex-direction:column;
+  width: 100%;
+}
+/* NAVBAR */
+.menu-nav-row{
+    align-self: flex-end;
+    background-color: #C4C4C4;
+    margin-bottom: 1%;
+}
+
+.menu-left-col{
+  align-self: center;
+  width: auto;
+  flex-wrap: nowrap;
+}
+
+.menu-center-col{
+  align-items: center;
+}
+.menu-right-col{
+  width:5%;
+}
+
+.menu-ul-row{
+  padding:0;
+  margin:0;
+  margin-top:3%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.menu-ul-row li{
+  font-family: 'Rubik', sans-serif;
+  font-weight: bold;
+  display: block;
+  background-color: #8A8889;
+  text-align: center;
+
+}
+
+.menu-ul-row li a:link{
+  display: block;
+  padding: 15px 10px 15px 10px;
+  background-color: #8A8889;
+  text-decoration: none;
+  width: 100%;
+  color:white;
+}
+
+.menu-ul-row li a:hover{
+  background-color: #F1F1F1;
+}
+
+.menu-ul{
+  flex:1;
+  margin: 0px 20px;
+}
+
+.menu-icon{
+  width: auto;
+  height:5vh;
+  margin-left: 20px;
+}
+
+/* /////// */
+.name-input{
+  padding: 5px 4px 2px 2px;
+  border-style: none;
+  background-color: #C4C4C4;
+  width: 80%;
+  font-size: x-large;
+}
+
+.button-content-col{
+  width:60%;}
+
+.side-content-col{
+  width:40%;
+  margin: 25px;
+  background: white;
+}
+.category-btn-row{
+  padding:0;
+  margin:0;
+  margin-top:2%;
+  padding-bottom: 6px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-bottom:2px solid #C4C4C4;
+}
+.item-btn-row{
+  padding:0;
+  margin:0;
+  margin-top:2%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.btn,.item-btn{
+  padding: 30px;
+  color: #F1F1F1;
+  background-color: #8A8889;
+  border-radius: 25px;
+  border-style:none;
+  margin:10px;
+  flex:1;
+  font-family: 'Rubik', sans-serif;
+  font-weight: bold;
+}
+
+.btn:hover{
   background: #7E57C2;
 }
 
-.buttonDelete{
-  background: #FF8B3E;
+.item-btn:hover{
+  background: #7E57C2;
+}
+.item-btn{
+  padding: 40px;
+  background: #B085F5;
+  margin-top: 3px;
+  border-radius: 0%;
+  text-align: left;
+}
+
+#lunch button{
+  padding:20px;
+}
+
+.order-content{
+  text-align: right;
+  padding: 0px 30px 0px 30px;
+  border-bottom: 2px solid #C4C4C4;
+}
+
+.order-content p{
+  background: #C4C4C4;
+  padding: 10px;
+}
+
+.client-input{
+  padding: 0px 30px 0px;
+}
+.line-order p{
+  text-align: center;
+  color: #442681;
+  font-family: Rubik;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.footer-side{
+  padding: 30px 30px 30px;
+  text-align: right;
+}
+
+.btn-aside{
+  padding: 20px;
+  color: white;
+  font-family: Rubik;
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import{ db} from './data/firebase';
 import './index.css';
 import Navbar from './navbar';
 import Btn from './components/Btn'
@@ -21,6 +22,7 @@ class MenuView extends React.Component{
     this.sendName= this.sendName.bind(this);
     this.addName=this.addName.bind(this);
     this.index = 0; // id de cada elemento de orden creado
+    this.saveOrder=this.saveOrder.bind(this)
   }
   
   //añade un producto({name,value,id} a la orden(list -> array de objetos [el index comienza en 0 y se utiliza como id]
@@ -32,7 +34,7 @@ class MenuView extends React.Component{
   //
   delete(id){
     let newList = [...this.state.list] //crea copia de list para no cambiar directamente el estado de un componente
-    for( var i = 0; i < newList.length; i++){ //recorre la newList y consigue la posicion de cada elemento,si coincide
+    for( var i = 0; i < newList.length; i++){ //recorre la newList y consigue la id de cada elemento,si coincide
       if ( newList[i].id === id) { //con la misma id que se le pasa borra este elemento (desde posicion i, elimina 1 elemento)
         newList.splice(i, 1); 
       }
@@ -41,23 +43,23 @@ class MenuView extends React.Component{
   }
 
   view(category){ // dependiendo de la categoria cambia el estado, este metodo se pasa como propiedad al boton
-    if(category ==="Desayunos"){
+    category = category.toLowerCase()
+    console.log(category);
+    if(category ==="desayunos"){
       this.setState({
-        Desayunos:true,
-        Almuerzos:false
+        desayunos:true,
+        almuerzos:false
       })
     }
-    if(category ==="Almuerzos"){
+    if(category ==="almuerzos"){
       this.setState({
-        Desayunos:false,
-        Almuerzos:true
+        desayunos:false,
+        almuerzos:true
       })
     }
   }
   addName(){
     alert('holi')
-     
-    
   }
 
   changeClient(el){
@@ -67,29 +69,56 @@ class MenuView extends React.Component{
 }
   sendName(e){
     e.preventDefault();
-    console.log(this.state)
-console.log('enviando..')
+    this.addName(this.state)
+} 
+saveOrder(){
+  let data={client :this.state.client ,
+    uid:doc.uid,
+  list:this.state.list,
+  ready:false ,
+  delivered:false, 
+  time : Date.now()
 }
+ db.collection('ordenes').doc().set(data).then(ref=> {
+   db.collection("ordenes").then(() => {
+   
+   })
+   
+  //  this.clearOrder()
+})
+};
+
 
   render(){
     return (
       <>
         <Navbar/>
-          <section className="content">
-            <div className="buttonday">
-              {Object.keys(Menu).map(btn=> <CategoryBtn name={btn} view={this.view} key={btn}/>)}
-              <ul>
-                {this.state.Desayunos && Menu.Desayunos.map(btn=><Btn name={btn.name} value={btn.value} add={this.add} key={btn.name}/>)}
-                {this.state.Almuerzos && <LunchBtn add={this.add}/>}
-              </ul>
-            </div>
-          </section>  
-          <aside className="side-content">
-            <OrderName changeClient={this.changeClient} client={this.state.client} sendName={this.sendName} nameclient={this.add}/>
-            <div>
-              <Order list ={this.state.list} delete={this.delete} sendName={this.sendName} nameclient={this.add}/>
-            </div>
-          </aside>
+          <div className="content-row">
+            <section className="button-content-col">
+              <div className="category-btn-row">
+                {Object.keys(Menu).map(btn=> <CategoryBtn name={btn.toUpperCase()} view={this.view} key={btn}/>)}
+              </div>
+                {this.state.desayunos &&
+                  <div className="item-btn-row"> {Menu.Desayunos.map(btn=><Btn name={btn.name} value={btn.value} add={this.add} key={btn.name}/>)}
+                  </div> }
+                {this.state.almuerzos && <LunchBtn add={this.add}/>}
+              
+              
+            </section>  
+            <aside className="side-content-col">
+              <div className="line-order">
+                <p>ORDEN</p>
+              </div>
+              <OrderName changeClient={this.changeClient} client={this.state.client} sendName={this.sendName} addName={this.addName}/>
+              <div className="order-content">
+                <Order list = {this.state.list} delete={this.delete} addName={this.addName} client={this.state.client}/>
+              </div>
+              <footer className="footer-side">
+                <button className="btn-aside" >Limpiar</button>
+                <button className="btn-aside" onClick={this.saveOrder}>ENVIAR</button>
+              </footer>
+            </aside>
+          </div>
       </>
     )
   }
