@@ -102,8 +102,11 @@ saveOrder(){
   alert("jjj")
   }
 
+let idClient =this.state.client + Date.now();
+
   let data=
   {
+  id: idClient,
   client: this.state.client,
   list: this.state.list,
   ready: false,
@@ -111,10 +114,11 @@ saveOrder(){
   time: Date.now() 
   }
 
-  db.collection("ordenes").doc().set(data)
-  .then(() =>{
-    this.clearOrder();
-  })
+  db.collection("ordenes").doc(idClient).set(data)
+  
+  .then(() => {
+      this.clearOrder();
+   })
 
 }
 
