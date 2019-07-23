@@ -98,6 +98,9 @@ clearOrder(){
 }
 
 saveOrder(){
+  if (this.state.client===""){
+  alert("jjj")
+  }
 
   let data=
   {
@@ -127,7 +130,7 @@ saveOrder(){
                 {this.state.desayunos &&
                   <div className="item-btn-row"> {Menu.Desayunos.map(btn=><Btn name={btn.name} value={btn.value} add={this.add} key={btn.name}/>)}
                   </div> }
-                {this.state.almuerzos && <LunchBtn add={this.add}/>}  
+                {this.state.almuerzos && <LunchBtn  className ="hola"add={this.add}/>}  
             </section>  
             <aside className="side-content-col">
               <div className="line-order">
