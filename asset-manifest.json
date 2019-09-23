@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/SCL009-Burger-Queen/static/css/main.cdecc365.chunk.css",
-    "main.js": "/SCL009-Burger-Queen/static/js/main.3fce4420.chunk.js",
-    "main.js.map": "/SCL009-Burger-Queen/static/js/main.3fce4420.chunk.js.map",
+    "main.js": "/SCL009-Burger-Queen/static/js/main.077d49a7.chunk.js",
+    "main.js.map": "/SCL009-Burger-Queen/static/js/main.077d49a7.chunk.js.map",
     "runtime~main.js": "/SCL009-Burger-Queen/static/js/runtime~main.bfb50733.js",
     "runtime~main.js.map": "/SCL009-Burger-Queen/static/js/runtime~main.bfb50733.js.map",
-    "static/js/2.f8972335.chunk.js": "/SCL009-Burger-Queen/static/js/2.f8972335.chunk.js",
-    "static/js/2.f8972335.chunk.js.map": "/SCL009-Burger-Queen/static/js/2.f8972335.chunk.js.map",
+    "static/js/2.70238c57.chunk.js": "/SCL009-Burger-Queen/static/js/2.70238c57.chunk.js",
+    "static/js/2.70238c57.chunk.js.map": "/SCL009-Burger-Queen/static/js/2.70238c57.chunk.js.map",
     "index.html": "/SCL009-Burger-Queen/index.html",
-    "precache-manifest.1d803e6efdca6398cba48951fdd6b68e.js": "/SCL009-Burger-Queen/precache-manifest.1d803e6efdca6398cba48951fdd6b68e.js",
+    "precache-manifest.fd0a39b9c6ed20b9c2188cbec460976f.js": "/SCL009-Burger-Queen/precache-manifest.fd0a39b9c6ed20b9c2188cbec460976f.js",
     "service-worker.js": "/SCL009-Burger-Queen/service-worker.js",
     "static/css/main.cdecc365.chunk.css.map": "/SCL009-Burger-Queen/static/css/main.cdecc365.chunk.css.map"
   }
