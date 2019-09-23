@@ -10,7 +10,7 @@ import RecordView from './views/RecordView';
 
 
 const routing = (
-  <Router>
+  <Router basename="/SCL009-Burger-Queen/">
     <Switch>
       <Route exact path='/' component = {MenuView} />
       <Route path='/Kitchen' component = {KitchenView} />
