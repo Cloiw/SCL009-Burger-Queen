@@ -4,8 +4,8 @@ import { Link } from "react-router-dom"
 
 class Navbar extends React.Component {
 	constructor(props){
-	super(props)
-	this.state = {};
+		super(props)
+		this.state = {};
 	}
 
 	render() {
@@ -17,7 +17,7 @@ class Navbar extends React.Component {
 					</div>
 					<div className="menu-center-col">
 							<ul className="menu-ul-row">
-								<li className={this.props.state === 'menu' ? 'btn-selected-navbar' : 'menu-ul'}><Link to={'/'}>MENÚ</Link></li>
+								<li className={this.props.state === 'menu' ? 'btn-selected-navbar' : 'menu-ul'}><Link to={process.env.PUBLIC_URL + '/'}>MENÚ</Link></li>
 								<li className={this.props.state === 'kitchen' ? 'btn-selected-navbar' : 'menu-ul'}><Link to="/Kitchen">COCINA</Link></li>
 								<li className={this.props.state === 'ordersReady' ? 'btn-selected-navbar' : 'menu-ul'}><Link to="/OrdersReady">PEDIDOS LISTOS</Link></li>
 								<li className={this.props.state === 'record' ? 'btn-selected-navbar' : 'menu-ul'}><Link to="/Record">HISTORIAL</Link></li>
