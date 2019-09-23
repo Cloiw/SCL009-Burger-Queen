@@ -4,11 +4,9 @@ import Menu from '../data/menu.json'
 import '../index.css';
 
 class LunchBtn extends React.Component{
-    
-    render(){
-        return (
-            <>
-            
+  render() {
+    return (
+      <>   
         <div id="lunch" className="item-btn-row">
             <div className="content-item-btn-row">
                 <h4>Hamburguesas</h4>
@@ -39,8 +37,9 @@ class LunchBtn extends React.Component{
                 </div>
             </div>
         </div>
-    </>)
-    }
+      </>
+    )
+  }
 }
 
 export default LunchBtn;
